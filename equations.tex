@@ -1,0 +1,111 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%               Equation print functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\myEquations[1]{\csname #1\endcsname}
+
+\newcommand{\declareEquation}[2]{%
+\expandafter\def\csname #1\endcsname{%
+#2
+}%
+}
+
+\newcommand{\splitEquation}[2]{
+\begin{split}
+\myEquations{#1}#2
+\end{split}
+}
+
+\newcommand{\rePrintEquation}[3]{
+\begin{equation}
+\ifstrequal{#3}{split}{\splitEquation{#1}{#2}}{\myEquations{#1}#2}
+\tag{\ref{#1} revisited}
+\end{equation}
+}
+
+\newcommand{\printEquation}[3]{
+\listcsgadd{eqList}{#1}
+\begin{equation}\label{#1}
+\ifstrequal{#3}{split}{\splitEquation{#1}{#2}}{\myEquations{#1}#2}
+\end{equation}
+}
+
+\def\printAllEquations{%
+\begin{description}
+    \renewcommand*{\do}[1]{\item[#1:] \rePrintEquation{#1}{.}{split}}
+    \dolistcsloop{eqList}
+\end{description}%
+}
+
+\newcommand{\inlineEquation}[1]{%
+\listcsgadd{eqList}{#1}%
+$\myEquations{#1}$%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%               Useful Equation functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\abssq}[1]{\left | #1 \right |^2}
+
+\newcommand{\abs}[1]{\left | #1 \right |}
+
+\newcommand{\withRbrackets}[1]{\left ( #1 \right )}
+
+\newcommand{\withSbrackets}[1]{\left [ #1 \right ]}
+
+\newcommand{\withCbrackets}[1]{\left \{ #1 \right \}}
+
+\newcommand{\ket}[1]{\left | #1 \right >}
+
+\newcommand{\bra}[1]{\left < #1 \right |}
+
+\newcommand{\braket}[3]{\bra{#1} #2 \ket{#3} }
+
+\newcommand{\expectation}[2]{\left < #1 | #2 \right >}
+
+\newcommand{\myexp}[1]{e^{#1}}
+
+\newcommand{\fancy}[1]{\mathscr{#1}}
+
+\newcommand{\soloExpectation}[1]{\left<#1 \right>}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%               Sample equations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%iEqLorentzForceLaw
+\declareEquation{iEqLorentzForceLaw}{%
+\vec{F} = q\vec{v}\times\vec{B}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

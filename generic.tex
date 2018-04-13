@@ -1,0 +1,34 @@
+% \def\SourceDirectory{/home/mrware/Dropbox/Overleaf/genericReport}
+\def\SourceDirectory{C:/Users/mrwar/Dropbox/Overleaf/genericReport}
+%%%% begin main.tex %%%%
+\documentclass[12pt]{article}
+\include{packages}
+\include{functions}
+\include{equations}
+
+\renewcommand{\figurePath}[1]{\SourceDirectory/Images/#1}
+
+\begin{document}
+\title{Magnetism}
+\author{Matthew Ware}
+\date{4/16/2018}
+\maketitle
+
+\figureDefaultEPS{doubleSlit_setup}{r}{Double-slit experiment}
+Figure~\figureRef{Double-slit experiment}.
+
+\lipsum[1-3]
+
+\inlineEquation{iEqLorentzForceLaw}
+\printEquation{iEqLorentzForceLaw}{.}{split}
+\textbf{We can also add citations in the text - GeeWhizz!
+Here is my really awesome bibliography entry~\cite{SampleBibEntry}.} 
+
+\lipsum[4-6]
+
+\printAllEquations
+
+\bibliographystyle{plain}
+\bibliography{generic_bib}
+
+\end{document}

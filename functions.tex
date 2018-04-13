@@ -1,0 +1,105 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%                  Include Functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\chapterInclude}[1]{\include{#1/#1}}
+
+\newcommand{\sectionInclude}[2]{\include{#1/#2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%                  Footnote Functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\myfootnote}[1]{\footnote{#1}\enspace }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%                  Figure Functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\figurePath}[1]{\SourceDirectory/Images/#1}
+
+\newcommand{\figureDefault}[2]{
+\begin{wrapfigure}{#2}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{\figurePath{#1}}
+  \end{center}
+  \caption{#1}
+  \label{fig:#1}
+\end{wrapfigure}
+}
+
+\newcommand{\figureDMP}[1]{
+  \centering
+  % \raggedright
+    \includegraphics[width=.96\textwidth]{\figurePath{#1}}
+    \captionof{figure}{#1}
+  \label{fig:#1}
+}
+
+\newcommand{\figureCR}[2]{%
+\figureDefault{#1}{#2}\ref{fig:#1}%
+}
+
+\newcommand{\figureRef}[1]{\ref{fig:#1}}
+
+
+\newcommand{\figureVPage}[3]{
+\begin{wrapfigure}{#2}{0.5\textwidth}
+  \begin{minipage}[t]{0.5\textwidth}
+  \foreach \FIG in {#1}{\figureDMP{\FIG} \newline}
+\end{minipage}
+\end{wrapfigure}
+}
+
+\newcommand{\figureHPage}[2]{
+% \begin{wrapfigure}{#2}{1\textwidth}
+  \begin{flushleft}
+  \foreach \FIG in {#1}{
+  \begin{minipage}[t]{#2\textwidth}\figureDMP{\FIG}
+\end{minipage}}
+\end{flushleft}
+% \end{wrapfigure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%                  EPS Figure Functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\figureDefaultEPS}[3]{
+\begin{wrapfigure}{#2}{0.5\textwidth}
+  \begin{center}
+    \psfragfig[width=.48\textwidth]{\figurePath{#1}}{}
+  \end{center}
+  \caption{#3}
+  \label{fig:#3}
+\end{wrapfigure}
+}
+
+\newcommand{\figureDMPEPS}[2]{
+  \centering
+    \psfragfig[width=.96\textwidth]{\figurePath{#1}}{}
+    \captionof{figure}{#2}
+  \label{fig:#2}
+}
+
+\newcommand{\figureCREPS}[3]{%
+\figureDefault{#1}{#2}{#3}\ref{fig:#3}%
+}
+
+\newcommand{\figureVPageEPS}[2]{
+\begin{wrapfigure}{#2}{0.5\textwidth}
+  \begin{minipage}[t]{0.5\textwidth}
+  \foreach \FIG/\captiontxt in {#1}{\figureDMPEPS{\FIG}{\captiontxt} \newline}
+\end{minipage}
+\end{wrapfigure}
+}
+
+\newcommand{\figureHPageEPS}[2]{
+% \begin{wrapfigure}{#2}{1\textwidth}
+  \begin{flushleft}
+  \foreach \FIG/\captiontxt  in {#1}{
+  \begin{minipage}[t]{#2\textwidth}\figureDMPEPS{\FIG}{\captiontxt}
+\end{minipage}}
+\end{flushleft}
+% \end{wrapfigure}
+}
