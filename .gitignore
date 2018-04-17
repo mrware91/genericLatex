@@ -1,6 +1,15 @@
 ## Ignore pdfs
 *.pdf
 
+## Ignore image files
+*.eps
+*.jpg
+*.jpeg
+*.bmp
+
+## Other latex ignore
+*.oldaux
+
 ##Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
